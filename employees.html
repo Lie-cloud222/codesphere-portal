@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Employee List</title>
+</head>
+<body>
+    <header>
+        <h1>Employee List</h1> <!-- Page headiing-->
+        <button id="menu-toggle" type="button">&#9776; Menu</button>
+    </header>
+<nav>
+        <!-- Navigation Links-->
+        <a href="index.html">Home</a>
+        <a href="departments.html">Departments</a>
+        <a href="employees.html">Employee List</a>
+        <a href="training.html">Training Resources</a>
+        <a href="register.html">Register</a>
+    </nav>
+
+    <main>
+        <!-- Employee Directory -->
+         <section>
+            <h2>Employee Directory</h2>
+            <p>Find and get to know your colleagues at CodeSphere. Browse the full list of employees, search or filter by department, and update details when something changes.</p>
+         </section>
+
+         <label for="department-filter">Filter by department</label>
+         <select id="department-filter">
+            <option value="All">All departments</option>
+         </select>
+
+         <h3>Move an employee</h3>
+         <p>Drag an employee card onto a department to move them to that team.</p>
+         <div id="drop-zones" class="drop-zones"></div>
+         <p id="drop-message" aria-live="polite"></p>
+
+         <div id="employee-list" class="card-grid"></div>
+
+        <section id="remote-employees-section">
+            <h2>Remote employees</h2>
+            <p>Load employee records from the CodeSphere server using four different techniques.</p>
+            <div class="remote-buttons">
+                <button type="button" id="load-xhr">Load with XHR</button>
+                <button type="button" id="load-fetch">Load with Fetch</button>
+                <button type="button" id="load-async">Load with async/await</button>
+                <button type="button" id="load-jquery">Load with jQuery</button>
+            </div>
+            <p id="remote-status" aria-live="polite"></p>
+            <p id="remote-summary"></p>
+            <div id="remote-list" class="card-grid"></div>
+            <h3>Test error handling</h3>
+            <div class="remote-buttons">
+                <button type="button" id="test-server-error">Call /api/fail (500 error)</button>
+                <button type="button" id="test-network-error">Request a wrong port</button>
+            </div>
+        </section>
+
+    </main>
+    <script src="dist/bundle.js"></script>
+
+</body>
+<footer>
+    <p>&copy; 2026 | CodeSphere Technologies (Pty)</p>
+</footer>
+</html>

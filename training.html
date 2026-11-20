@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Training</title>
+</head>
+<body>
+    <header>
+        <h1>Training Resources</h1> <!-- Page headiing-->
+        <button id="menu-toggle" type="button">&#9776; Menu</button>
+    </header>
+
+    <nav>
+        <!-- Navigation Links-->
+        <a href="index.html">Home</a>
+        <a href="departments.html">Departments</a>
+        <a href="employees.html">Employee List</a>
+        <a href="training.html">Training Resources</a>
+        <a href="register.html">Register</a>
+    </nav>
+
+     <main>
+        <!-- Training Resources -->
+         <section>
+            <h2>Training Resources</h2>
+            <p>Grow your skills with CodeSphere training. Track how our teams are learning, earn badges as you complete courses and watch training videos at your own pace.</p>
+            <!-- Canvases with fallback text and an aria-label -->
+            <div class="canvas-area">
+                <canvas id="training-chart" width="800" height="450" role="img" aria-label="Bar chart of total training hours by department compared with the yearly target">
+                    Your browser does not support the canvas element. This chart shows the total training hours completed in each department compared with the yearly target.
+                </canvas>
+
+                <canvas id="id-badge" width="320" height="480" role="img" aria-label="Employee ID badge showing name, job title, department and training progress">
+                    Your browser does not support the canvas element. This is an employee ID badge showing the
+                    first employee's name, job title, department and training progress.
+                </canvas>
+            </div>
+
+            <!-- Update an employee's hours to see the chart change -->
+             <h3>Update training hours</h3>
+             <form id="hours-form">
+                <label for="hours-employee">Employee</label>
+                <select id="hours-employee" required></select>
+
+                <label for="hours-value">Training hours completed</label>
+                <input type="number" id="hours-value" min="0" max="500" required>
+
+                <button type="submit">Update hours</button>
+             </form>
+             <p id="hours-message" aria-live="polite"></p>
+         </section>
+
+         <section>
+            <h2>Training Video</h2>
+            <video id="training-video" controls preload="metadata" width="640">
+                <source src="trainingVideo.mp4" type="video/mp4">
+                Your browser does not support the video element.
+            </video>
+            <div class="video-controls">
+                <button type="button" id="play-button">Play</button>
+                <button type="button" id="pause-button">Pause</button>
+            </div>
+            <p id="video-message" aria-live="polite"></p>
+         </section>
+
+         <section id="stats-section">
+            <h2>Employee Statistics (Background Processing)</h2>
+            <p>Calculate training statistics for a large list of records. The work happens in the background, so the page stays responsive.</p>
+
+            <label for="record-count">Number of records</label>
+            <select id="record-count">
+                <option value="100000">100 000</option>
+                <option value="500000">500 000</option>
+                <option value="1000000">1 000 000</option>
+            </select>
+
+            <div class="stats-controls">
+                <button type="button" id="run-stats-button">Claculate statistics</button>
+                <button type="button" id="cancel-stats-button">Cancel</button>
+            </div>
+
+            <p class="counter-line">Page counter: <strong id="page-counter">0</strong> <span class="spinner" aria-hidden="true"></span></p>
+            <p id="stats-status" class="feedback" aria-live="polite"></p>
+            <div id="stats-results"></div>
+         </section>
+    </main>
+    <script src="employee-data.js"></script>
+    <script src="employee-model.js"></script>
+    <script src="training.js"></script>
+    <script src="html5-apis.js"></script>
+    <script src="stats.js"></script>
+    <script src="adaptive.js"></script>
+
+
+</body>
+
+<footer>
+    <p>&copy; 2026 | CodeSphere Technologies (Pty)</p>
+</footer>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>SVG Department Map</title>
+</head>
+<body>
+    <header>
+        <h1>Departments</h1>
+        <button id="menu-toggle" type="button">&#9776; Menu</button>
+    </header>
+
+    <nav>
+        <!-- Navigation Links-->
+        <a href="index.html">Home</a>
+        <a href="departments.html">Departments</a>
+        <a href="employees.html">Employee List</a>
+        <a href="training.html">Training Resources</a>
+        <a href="register.html">Register</a>
+    </nav>
+
+     <main>
+        <!-- Department Map -->
+         <section>
+            <h2>Our Departments</h2>
+            <p>See how CodeSphere is organised. Select a department on the map to learn more about the team and what they do.</p>
+
+
+            <!-- inline SVG with 4 rectangles -->
+            <svg class="department-map" viewBox="0 0 600 320" role="group" aria-labelledby="map-title map-desc">
+                <!-- Title and description for the whole drawing -->
+                <title id="map-title">CodeSphere department map</title>
+                <desc id="map-desc">Four departments shown as blocks. Select a block to see its headcount and team members.</desc>
+
+                <rect 
+                    id="dept-engineering"
+                    class="department"
+                    data-department="Engineering"
+                    x="20"
+                    y="20"
+                    width="270"
+                    height="130"
+                    rx="14"
+                    tabindex="0"
+                    role="button"
+                    aria-pressed="false"
+                    aria-label="Engineering department"></rect>
+                <text class="department-label" x="155" y="92">Engineering</text>
+
+                <rect 
+                    id="dept-hr"
+                    class="department"
+                    data-department="Human Resources"
+                    x="310"
+                    y="20"
+                    width="270"
+                    height="130"
+                    rx="14"
+                    tabindex="0"
+                    role="button"
+                    aria-pressed="false"
+                    aria-label="Human Resources department"></rect>
+                <text class="department-label" x="445" y="92">Human Resources</text>
+
+                <rect 
+                    id="dept-finance"
+                    class="department"
+                    data-department="Finance"
+                    x="20"
+                    y="170"
+                    width="270"
+                    height="130"
+                    rx="14"
+                    tabindex="0"
+                    role="button"
+                    aria-pressed="false"
+                    aria-label="Finance department"></rect>
+                <text class="department-label" x="155" y="242">Finance</text>
+
+                <rect 
+                    id="dept-operations"
+                    class="department"
+                    data-department="Operations"
+                    x="310"
+                    y="170"
+                    width="270"
+                    height="130"
+                    rx="14"
+                    tabindex="0"
+                    role="button"
+                    aria-pressed="false"
+                    aria-label="Operations department"></rect>
+                <text class="department-label" x="445" y="242">Operations</text>
+            </svg>
+
+            <!-- Department details appear here -->
+             <section id="department-details" class="card" aria-live="polite">
+                <p>Select a department on a map to see its headcount.</p>
+             </section>
+         </section>
+
+         <section>
+            <h2>Where Are You Working From?</h2>
+            <p>Select the button to see your current latitude and longitude. Your location is only shown on this page and is never saved or sent anywhere.</p>
+            <button type="button" id="location-button">Show my location</button>
+            <p id="location-result" aria-live="polite"></p>
+         </section>
+    </main>
+    <script src="employee-data.js"></script>
+    <script src="employee-model.js"></script>
+    <script type="module" src="departments.js"></script>
+    <script src="html5-apis.js"></script>
+
+</body>
+
+<footer>
+    <p>&copy; 2026 | CodeSphere Technologies (Pty)</p>
+</footer>
+
+</html>

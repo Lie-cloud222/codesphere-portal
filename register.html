@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Registration Form</title>
+</head>
+<body>
+    <header>
+        <h1>Register New Employee</h1>
+        <button id="menu-toggle" type="button">&#9776; Menu</button>
+    </header>
+
+    <nav>
+        <!-- Navigation Links-->
+         <a href="index.html">Home</a>
+        <a href="departments.html">Departments</a>
+        <a href="employees.html">Employee List</a>
+        <a href="training.html">Training Resources</a>
+        <a href="register.html">Register</a>
+    </nav>
+
+    <main>
+        <!-- Registration Form -->
+         <section>
+            <h2>Register a New Employee</h2>
+            <p>Welcoming someone new to the team? Fill in the form below to add them to the portal. Please make sure all details are correct before you submit.</p>
+
+
+        <form id="EmployeeReg">
+            <p>
+              <label for="first-name">First name</label><br>
+              <input type="text" id="first-name" name="firstName" required>
+            </p>
+
+            <p>
+              <label for="last-name">Last name</label><br>
+              <input type="text" id="last-name" name="lastName" required>
+            </p>
+
+            <p>
+              <label for="email">Email</label><br>
+              <input type="email" id="email" name="email" required>
+            </p>
+
+            <p>
+                <label for="department">Department</label><br>
+                <select id="department" name="department" required>
+                    <option value="">--Select Department-- </option>
+                    <option value="engineering">Engineering</option>
+                    <option value="human-resources">Human Resources</option>
+                    <option value="finance">Finance</option>
+                    <option value="operations">Operations</option>
+                </select>
+            </p>
+
+            <p>
+              <label for="job-title">Job Title</label><br>
+              <input type="text" id="job-title" name="jobTitle" required>
+            </p>
+
+            <p>
+              <label for="start-date">Start Date</label><br>
+              <input type="date" id="start-date" name="startDate" required>
+            </p>
+
+            <p>
+              <label for="cell">Cell Phone</label><br>
+              <input type="tel" id="cell" name="cell" pattern="\d{3} \d{3} \d{4}" 
+              title="Use the format 012 345 6789" required>
+            </p>
+
+            <p>
+                <label for="photo">Employee Photo</label><br>
+                <input type="file" id="photo" name="photo" accept="image/png, image/jpeg">
+            </p>
+
+            <p id="photo-message" aria-live="polite"></p>
+            <img id="photo-preview" class="photo-preview" alt="Preview of the chosen employee photo" hidden>
+            <p>
+                <button type="submit">Submit</button>
+            </p>
+        </form>
+
+        <p id="success-message" aria-live="polite"></p>
+    </section>
+    </main>
+
+   <script src="employee-data.js"></script>
+    <script src="employee-model.js"></script>
+    <script src="register.js"></script>
+    <script src="html5-apis.js"></script> 
+
+</body>
+
+<footer>
+    <p>&copy; 2026 | CodeSphere Technologies (Pty)</p>
+</footer>
+
+</html>

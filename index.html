@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Home</title>
+</head>
+<body>
+    <header>
+        <h1>Home | Employee Management Portal</h1> <!-- Page headiing-->
+        <button id="menu-toggle" type="button">&#9776; Menu</button>
+    </header>  
+
+    <nav>
+        <!-- Navigation Links-->
+        <a href="departments.html">Departments</a>
+        <a href="employees.html">Employee List</a>
+        <a href="training.html">Training Resources</a>
+        <a href="register.html">Register</a>
+    </nav>
+
+    <main>
+        <!-- About EMP -->
+         <section class="about-section">
+            <h2>About Employee Management Portal</h2>
+            <p>Welcome to the CodeSphere Employee Management Portal, your one-stop place for everything people-related at CodeSphere Technologies. Here you can look up your colleagues, update your details, register new team members, explore our departments and find training resources. You can also check simple charts that show how our teams are growing and learning. Everything is in one place, so you spend less time searching and more time getting on with your work.</p>
+         </section>
+
+         <!-- Notices -->
+          <section>
+            <h2>Notices</h2>
+            <p class="card system-notice">
+                <span class="status-dot" aria-hidden="trus"></span>
+                Annual training hours are due by 31 December. Check your progress on the Training page.
+            </p>
+          </section>
+
+          <section>
+            <h2>Quick Access</h2>
+            <div class="flip-grid">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3>Employee Directory</h3>
+                            <p>Hover to flip</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Find colleagues, filter by department and update details.</p>
+                            <a href="employees.html" class="cta-button">Open</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3>Our Departments</h3>
+                            <p>Hover to flip</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Explore the department map and see each team's headcount</p>
+                            <a href="departments.html" class="cta-button">Open</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3>Training</h3>
+                            <p>Hover to flip</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Track training hours, view charts and see your ID badge.</p>
+                            <a href="training.html" class="cta-button">Open</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </section>
+
+          <!-- Live notifications-->
+          <section id="notifications-section">
+            <h2>Live notifications</h2>
+            <p id="notification-status" class="notification-status is-connecting" role="status">Connecting...</p>
+
+            <div class="notification-controls">
+                <div>
+                    <label for="department-subscribe">Subscribe to a department</label>
+                    <select id="department-subscribe">
+                        <option value="All">All departments</option>
+                        <option value="Engineering">Engineering</option>
+                        <option value="Human Resources">Human Resources</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Operations">Operations</option>
+                    </select>
+                </div>
+                <button type="button" id="disconnect-button">Disconnect</button>
+                <button type="button" id="reconnect-button" disabled>Reconnect</button>
+            </div>
+            <ul id="notification-list" class="notification-list" role="log" aria-live="polite" aria-label="Notifications"></ul>
+          </section>
+    </main>
+    <script src="adaptive.js"></script>
+    <script src="notification.js"></script>
+
+</body>
+
+<footer>
+    <p>&copy; 2026 | CodeSphere Technologies (Pty)</p>
+</footer>
+</html>
