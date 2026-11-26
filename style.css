@@ -277,7 +277,7 @@ footer p {
     color: var(--dry-sage, #b5ba72);
 }
 
-/* Online / offline status (Task 5) */
+/* Online / offline status */
 .connection-status {
     margin: 0 0 1rem;
     padding: 0.6rem 1rem;

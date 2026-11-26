@@ -1,10 +1,8 @@
-// ==========================================================
-// training.js - Task 8: canvas bar chart and ID badge
+// training.js - canvas bar chart and ID badge
 // Uses the AppData namespace from employee-data.js and employee-model.js (loaded first).
-// ==========================================================
 (function () {
 
-    // Step 20: get both canvases and their 2D drawing contexts.
+    // get both canvases and their 2D drawing contexts.
     const chartCanvas = document.getElementById("training-chart");
     const chartContext = chartCanvas.getContext("2d");
 
@@ -28,9 +26,7 @@
     const TEXT_COLOUR = "#2b2640";
     const TARGET_COLOUR = "#e67e22";
 
-    // ----------------------------------------------------------
-    // Step 21: calculate totals per department (nothing is hard-coded)
-    // ----------------------------------------------------------
+    // calculate totals per department (nothing is hard-coded)
 
     // Adds up one numeric field ("trainingHours" or "trainingTarget") for each
     // department and returns an object such as { Engineering: 66, Finance: 58, ... }.
@@ -52,9 +48,7 @@
         return totals;
     }
 
-    // ----------------------------------------------------------
-    // Steps 22 to 24: draw the bar chart
-    // ----------------------------------------------------------
+    // draw the bar chart
     function drawBarChart() {
         const hoursTotals = calculateTotals("trainingHours");
         const targetTotals = calculateTotals("trainingTarget");
@@ -85,7 +79,7 @@
         ctx.fillStyle = "#ffffff";
         ctx.fillRect(0, 0, width, height);
 
-        // Step 24: chart title.
+        // chart title.
         ctx.fillStyle = TEXT_COLOUR;
         ctx.font = "bold 24px 'Segoe UI', Arial, sans-serif";
         ctx.textAlign = "center";
@@ -123,7 +117,7 @@
             ctx.fillText(String(tickValue), margin.left - 10, y + 5);
         }
 
-        // Step 22: draw one bar per department with a for loop and fillRect().
+        // draw one bar per department with a for loop and fillRect().
         const slotWidth = plotWidth / DEPARTMENT_NAMES.length; // space for each department
         const barWidth = slotWidth * 0.5;
 
@@ -139,7 +133,7 @@
             ctx.fillStyle = BAR_COLOURS[i % BAR_COLOURS.length];
             ctx.fillRect(x, y, barWidth, barHeight);
 
-            // Step 24: the value above the bar and the department name below the axis.
+            // the value above the bar and the department name below the axis.
             ctx.fillStyle = TEXT_COLOUR;
             ctx.textAlign = "center";
             ctx.font = "bold 16px 'Segoe UI', Arial, sans-serif";
@@ -149,7 +143,7 @@
             ctx.fillText(name, x + barWidth / 2, baseY + 28);
         }
 
-        // Step 23: dashed target line. Each department has its own target,
+        // dashed target line. Each department has its own target,
         // so one dashed mark is drawn across each department's slot.
         ctx.strokeStyle = TARGET_COLOUR;
         ctx.lineWidth = 3;
@@ -163,7 +157,7 @@
         ctx.stroke();
         ctx.setLineDash([]);
 
-        // Step 23: X and Y axes with moveTo() and lineTo().
+        // X and Y axes with moveTo() and lineTo().
         ctx.strokeStyle = TEXT_COLOUR;
         ctx.lineWidth = 2;
         ctx.beginPath();
@@ -190,9 +184,7 @@
             "Bar chart of total training hours by department compared with the yearly target: " + summary + ".");
     }
 
-    // ----------------------------------------------------------
-    // Step 25: draw the ID badge for employees[0]
-    // ----------------------------------------------------------
+    // draw the ID badge for employees[0]
     function drawBadge() {
         const person = AppData.employees[0];
         const ctx = badgeContext;
@@ -268,9 +260,7 @@
         ctx.fillRect(barX, barY, barWidth * progress, 18);
     }
 
-    // ----------------------------------------------------------
     // Edit an employee's training hours and redraw (before/after evidence)
-    // ----------------------------------------------------------
 
     // Put every employee in the dropdown.
     function fillEmployeeSelect() {

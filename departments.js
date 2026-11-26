@@ -1,5 +1,4 @@
 // Loaded as an ES6 module: <script type="module" src="departments.js">
-// ==========================================================
  
 // import the employees array.
 import { employees } from "./employees-export.js";
@@ -51,7 +50,7 @@ function findHeadOfDepartment(departmentName, members) {
     return bySeniority[0] || null; // null when the department has no employees
 }
  
-// Step 18: work out and display the details of one department.
+// work out and display the details of one department.
 function showDepartmentDetails(departmentName) {
     // .filter() keeps only the employees whose department matches.
     const members = employees.filter(function (employee) {

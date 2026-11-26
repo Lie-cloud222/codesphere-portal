@@ -1,8 +1,5 @@
-// ==========================================================
-// register.js - Task 4 (registration form), Task 5 (draft + offline),
-//               Task 11 (send the new employee to the server)
+// register.js - (registration form), (draft + offline), (send the new employee to the server)
 // Uses the AppData namespace from employee-data.js and employee-model.js (loaded first).
-// ==========================================================
 (function () {
 
     // Grab the form, its fields and the message area.
@@ -25,9 +22,7 @@
     // Timer used to hide the success pop-up after a few seconds.
     let messageTimer;
 
-    // ----------------------------------------------------------
-    // Task 4: validation helpers
-    // ----------------------------------------------------------
+    // validation helpers
 
     // Returns true if the email is already used by an employee in the array.
     // Both sides are lower-cased so "A@x.com" and "a@x.com" count as the same.
@@ -47,11 +42,9 @@
         }
     }
 
-    // ----------------------------------------------------------
-    // Task 5, steps 1-3: save and restore a draft with localStorage
-    // ----------------------------------------------------------
+    // save and restore a draft with localStorage
 
-    // Step 1: turn the form fields into a JSON string and store it.
+    // turn the form fields into a JSON string and store it.
     // try/catch (step 3) in case the browser blocks localStorage.
     function saveDraft() {
         const draft = {
@@ -71,7 +64,7 @@
         }
     }
 
-    // Step 2: when the page loads, read the draft back and fill the form.
+    // when the page loads, read the draft back and fill the form.
     function loadDraft() {
         try {
             const savedDraft = localStorage.getItem(DRAFT_KEY);
@@ -104,9 +97,7 @@
         }
     }
 
-    // ----------------------------------------------------------
-    // Task 5, step 6: online / offline status indicator
-    // ----------------------------------------------------------
+    // online / offline status indicator
 
     // Create the status message and put it just above the form.
     const connectionStatus = document.createElement("p");
@@ -130,9 +121,7 @@
     window.addEventListener("offline", updateConnectionStatus);
     updateConnectionStatus(); // show the correct message as soon as the page loads
 
-    // ----------------------------------------------------------
-    // Task 5, step 5: register the service worker
-    // ----------------------------------------------------------
+    // register the service worker
     if ("serviceWorker" in navigator) {
         window.addEventListener("load", function () {
             navigator.serviceWorker.register("/sw.js")
@@ -145,24 +134,22 @@
         });
     }
 
-    // ----------------------------------------------------------
-    // Task 11: send the new employee to the server (POST /api/employees)
-    // ----------------------------------------------------------
+    // send the new employee to the server (POST /api/employees)
 
     // Returns { ok, text } and never throws, so the caller can always show the text.
     async function sendEmployeeToServer(employee) {
-        // 11.7: serialise the object, which turns it into a JSON string.
+        // serialise the object, which turns it into a JSON string.
         const employeeJson = JSON.stringify(employee);
 
         try {
-            // 11.8: send the JSON text with a POST request using fetch.
+            // send the JSON text with a POST request using fetch.
             const response = await fetch("/api/employees", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: employeeJson
             });
 
-            // 11.9: the server replies with JSON such as { message: "..." }.
+            // the server replies with JSON such as { message: "..." }.
             const result = await response.json().catch(function () {
                 return {};
             });
@@ -173,7 +160,7 @@
             return { ok: false, text: "The server did not accept it (" + response.status + "): " + (result.message || response.statusText) };
 
         } catch (error) {
-            // 11.10: the request never reached the server (network failure).
+            // the request never reached the server (network failure).
             if (!navigator.onLine) {
                 return { ok: false, text: "You are offline, so the server was not told yet." };
             }
@@ -181,15 +168,13 @@
         }
     }
 
-    // ----------------------------------------------------------
     // Event listeners
-    // ----------------------------------------------------------
 
     // Check the email while the user types, so the message is ready
     // before they press Submit.
     emailInput.addEventListener("input", checkEmail);
 
-    // Step 1: every time anything in the form changes, save the draft.
+    // every time anything in the form changes, save the draft.
     registerForm.addEventListener("input", saveDraft);
 
     // Clear the old success message as soon as the user starts a new entry.
@@ -225,7 +210,7 @@
             trainingTarget: DEFAULT_TRAINING_TARGET
         };
 
-        // Task 12: AppData.addEmployee() makes an Employee (or Manager) object,
+        // AppData.addEmployee() makes an Employee (or Manager) object,
         // adds it to the list and remembers it for the next visit.
         const newEmployee = AppData.addEmployee(newEmployeeData);
 
@@ -244,7 +229,7 @@
             successMessage.classList.remove("has-error");
         }, 5000);
 
-        // Task 11: send the new employee to the server and add its reply to the pop-up.
+        // send the new employee to the server and add its reply to the pop-up.
         sendEmployeeToServer(newEmployee).then(function (reply) {
             successMessage.textContent = registeredText + " " + reply.text;
             successMessage.classList.toggle("has-error", !reply.ok);
@@ -263,7 +248,7 @@
         firstNameInput.focus();
     });
 
-    // Step 2: fill the form from a saved draft (runs once, when the page loads).
+    // fill the form from a saved draft (runs once, when the page loads).
     loadDraft();
 
 })();

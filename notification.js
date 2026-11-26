@@ -1,13 +1,13 @@
 // notification.js - real time notifications with WebSockets
 
-//Connects to the supplied server at ws://localhost:300
+//Connects to the supplied server at ws://localhost:3000
 // Server to client: { type: "info" | "alert" | "training", text, department, time }
 // Client to server: { type: "subscribe", department: "Finance" }
 
 // EVerything is inside a function so nothing here becomes a global
 (function () {
     // The address of the supplied WebSocket server.
-    const SERVER_URL = "ws:localhost:3000";
+    const SERVER_URL = "ws://localhost:3000";
 
     // Only the newest notifictions are kept on the page
     const MAX_NOTIFICATIONS = 30;
